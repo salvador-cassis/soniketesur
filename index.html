@@ -263,14 +263,59 @@
       transition: transform 0.6s ease;
     }
     .portfolio-item:hover img { transform: scale(1.05); }
-    .portfolio-item iframe {
-      position: absolute;
-      inset: 0;
+    .portfolio-placeholder {
       width: 100%;
       height: 100%;
-      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      transition: transform 0.4s ease;
     }
-    .portfolio-item { position: relative; }
+    .portfolio-item:hover .portfolio-placeholder { transform: scale(1.02); }
+    .portfolio-placeholder span {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 12px;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .play-link {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 10;
+    }
+    .play-link:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .play-link svg {
+      width: 24px;
+      height: 24px;
+      color: var(--bg);
+      margin-left: 3px;
+    }
+    .portfolio-item:hover .play-link { opacity: 1; }
     .portfolio-overlay {
       position: absolute;
       inset: 0;
@@ -585,35 +630,38 @@
       </div>
       <div class="portfolio-grid">
         <div class="portfolio-item fade-in">
-          <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&h=500&fit=crop" alt="Proyecto 1">
+          <div class="portfolio-placeholder"><span>Animación</span></div>
           <div class="portfolio-overlay">
             <h3>Proyecto de Animación</h3>
             <span>Diseño Sonoro</span>
           </div>
         </div>
         <div class="portfolio-item fade-in">
-          <iframe src="https://www.youtube.com/embed/FKsIRG3jFH0" title="Música para corto de animación" allowfullscreen></iframe>
+          <img src="https://i.ytimg.com/vi/FKsIRG3jFH0/hqdefault.jpg" alt="Música para corto de animación" loading="lazy">
+          <a href="https://www.youtube.com/watch?v=FKsIRG3jFH0" target="_blank" rel="noopener" class="play-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </a>
           <div class="portfolio-overlay">
             <h3>Música Original</h3>
             <span>Corto de Animación</span>
           </div>
         </div>
         <div class="portfolio-item fade-in">
-          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&h=500&fit=crop" alt="Proyecto 2">
+          <div class="portfolio-placeholder"><span>Corto</span></div>
           <div class="portfolio-overlay">
             <h3>Corto Independiente</h3>
             <span>Diseño Sonoro</span>
           </div>
         </div>
         <div class="portfolio-item fade-in">
-          <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=500&fit=crop" alt="Proyecto 3">
+          <div class="portfolio-placeholder"><span>Documental</span></div>
           <div class="portfolio-overlay">
             <h3>Documental</h3>
             <span>Mezcla Final</span>
           </div>
         </div>
         <div class="portfolio-item fade-in">
-          <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=500&fit=crop" alt="Proyecto 4">
+          <div class="portfolio-placeholder"><span>Video Arte</span></div>
           <div class="portfolio-overlay">
             <h3>Video Arte</h3>
             <span>Diseño Sonoro Integral</span>
@@ -692,11 +740,11 @@
         <form class="contact-form fade-in" action="mailto:salvador@soniketesur.com" method="post" enctype="text/plain">
           <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" autocomplete="name" required>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" autocomplete="email" required>
           </div>
           <div class="form-group">
             <label for="project-type">Tipo de Proyecto</label>
