@@ -1,0 +1,11 @@
+# Este repositorio se publica entero en soniketesur.com via GitHub Pages.
+# Solo debe contener archivos destinados al sitio publico.
+# Documentos internos (notas, roadmap, ideas) van fuera de codigo/.
+
+# Basura del sistema
+.DS_Store
+._*
+Thumbs.db
+
+# Documentos internos: nada de markdown se publica
+*.md
